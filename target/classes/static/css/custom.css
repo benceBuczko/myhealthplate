@@ -27,3 +27,22 @@
 .navBrandText{
     font-size: 1.6rem;
 }
+
+.modal-content{
+    max-width: 450px;
+}
+
+.warning{
+    color: red;
+    text-align: center;
+}
+
+.loginButton{
+    color: rgba(255,255,255,.5);
+    background: none;
+    border: none;
+}
+
+#loginForm{
+    min-width: 25rem;!important;
+}
