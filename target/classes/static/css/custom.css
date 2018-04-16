@@ -46,3 +46,11 @@
 #loginForm{
     min-width: 25rem;!important;
 }
+
+.footer{
+    background: none;
+}
+
+html{
+    min-height: 92%;
+}
