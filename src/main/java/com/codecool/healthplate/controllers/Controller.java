@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.Map;
 
 @org.springframework.stereotype.Controller
@@ -17,7 +18,8 @@ public class Controller {
     private UserService userService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String index(Model model) {
+    public String index(Model model, Principal principal) {
+        model.addAttribute("user", principal);
         return "index";
     }
 
@@ -32,18 +34,18 @@ public class Controller {
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String register(@RequestParam Map<String,String> user) {
-        User userToSave = new User(user.get("username"),user.get("password"),user.get("email"),user.get("dateofbirth"));
+        User userToSave = new User(user.get("username"),user.get("password"),user.get("email"));
         userService.saveUser(userToSave);
         return "redirect:/";
     }
 
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+   /* @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
     public String login(@RequestBody Map<String,String> userparams) {
         User user = userService.getUserByEmail(userparams.get("email"));
         if(user != null && BCrypt.checkpw(userparams.get("password"),user.getPassword())) return "true";
         else return "false";
-    }
+    }*/
 
 }

@@ -1,10 +1,6 @@
 package com.codecool.healthplate.models;
 
-import org.mindrot.jbcrypt.BCrypt;
-
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Date;
 
 @Entity
@@ -25,20 +21,15 @@ public class User {
     private String email;
 
     @Temporal(TemporalType.DATE)
-    @Column(nullable = false)
     private Date dateOfBirth;
 
     @Column
     private String picture;
 
-    public User(String userName, String password, String email, String dateOfBirth) {
+    public User(String userName, String password, String email) {
         this.userName = userName;
-        this.password = BCrypt.hashpw(password,BCrypt.gensalt());
+        this.password = password;
         this.email = email;
-        LocalDate localDate = LocalDate.parse(dateOfBirth);
-        this.dateOfBirth = Date.from(localDate.atStartOfDay()
-                .atZone(ZoneId.systemDefault())
-                .toInstant());
     }
 
     public User(String userName, String password) {

@@ -1,6 +1,10 @@
 $(document).ready(function () {
+    var loginWarning = $("#loginWarning");
     register();
-    login();
+    if(loginWarning.text() !== ""){
+        $('.dropdown-toggle').dropdown("toggle");
+    }
+    //login();
 });
 
 function register(){
@@ -70,7 +74,7 @@ function login(){
                     warning.text("Email address or password not correct!");
                 }
                 else {
-                    location.reload();
+                    form.submit();
                 }
             },
             error: function () {
