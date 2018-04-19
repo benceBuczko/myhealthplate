@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="author" content="Bence" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+    <link rel="icon" href="https://students.usask.ca/images/icons/healthy-vegetarian-eating.png"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine"/>
+
+    <link href="http://getbootstrap.com/docs/4.1/examples/sticky-footer/sticky-footer.css" rel="stylesheet"/>
+
+    <script src="js/register.js" defer=""></script>
+
+    <link rel="stylesheet" type="text/css" href="css/custom.css"/>
+
+    <title>MyHealthPlate</title>
+</head>
+<body>
+<div th:replace="fragments/header :: copy"></div>
+
+<div class="container">
+    <div class="row firstrow">
+        <div class="col-sm-6">
+            <h1>Welcome <span th:text="${user.getUserName()}">Username</span>!</h1><br/>
+            <h2>Your Personal Information:</h2>
+            <ul class="list-group">
+                <li class="list-group-item"><span><strong>Email: </strong><span th:text="${user.getEmail()}">Email address</span></span></li>
+                <li class="list-group-item"><span><strong>Date of birth: </strong><span th:text="${user.getDateOfBirth()}">Date of Birth</span></span></li>
+                <li class="list-group-item"><span><strong>Gender: </strong><span>Placeholder</span></span></li>
+                <li class="list-group-item"><span><strong>Height: </strong><span>Placeholder</span></span></li>
+                <li class="list-group-item"><span><strong>Weight: </strong><span>Placeholder</span></span></li>
+                <li class="list-group-item"><span><strong>Suggested daily energy intake: </strong><span>Placeholder</span></span></li>
+            </ul>
+        </div>
+        <div class="col text-right" th:if="${user.getPicture() != null}">
+            <a><img title="profile image" class="img-circle img-responsive" th:src="${user.getPicture()}" width="200"/></a>
+            <h1 th:text="${user.getUserName()}">Username</h1><br/>
+        </div>
+        <div class="col text-right" th:unless="${user.getPicture() != null}">
+            <a><img title="profile image" class="img-responsive" src="https://gordonswindowdecor.com/wp-content/uploads/sites/23/2015/06/person-placeholder.png" width="200"/></a>
+        </div>
+    </div>
+    <hr class="featurette-divider"/>
+    <div class="row">
+        <div class="col">
+            <h2>Your Daily Plans</h2>
+        </div>
+        <div class="col">
+            <button class="btn btn-outline-info">+ Add new Plan</button>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: copy"></div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

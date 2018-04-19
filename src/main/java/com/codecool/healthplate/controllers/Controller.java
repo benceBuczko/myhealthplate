@@ -19,7 +19,8 @@ public class Controller {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(Model model, Principal principal) {
-        model.addAttribute("user", principal);
+        User user = (principal == null) ? null : userService.getUserByEmail(principal.getName());
+        model.addAttribute("user", user);
         return "index";
     }
 
@@ -39,6 +40,12 @@ public class Controller {
         return "redirect:/";
     }
 
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public String userPage(Model model, Principal principal) {
+        User user = (principal == null) ? null : userService.getUserByEmail(principal.getName());
+        model.addAttribute("user", user);
+        return "user";
+    }
 
    /* @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
