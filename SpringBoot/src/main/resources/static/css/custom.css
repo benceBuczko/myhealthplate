@@ -1,0 +1,60 @@
+.firstrow{
+    margin-top: 10%;
+}
+
+.registerButton{
+    padding-left: 8%;
+    padding-right: 8%;
+    border-radius: 45%;
+}
+
+.w3-tangerine {
+    font-family: 'Tangerine', serif;
+}
+
+.container{
+    width: 80%;
+}
+
+.mainText{
+    margin-top: 5%;
+}
+
+.navList{
+    margin-right: 10px;
+}
+
+.navBrandText{
+    font-size: 1.6rem;
+}
+
+.modal-content{
+    max-width: 450px;
+}
+
+.warning{
+    color: red;
+    text-align: center;
+}
+
+.loginButton{
+    color: rgba(255,255,255,.5);
+    background: none;
+    border: none;
+}
+
+#loginForm{
+    min-width: 25rem;!important;
+}
+
+.footer{
+    background: none;
+}
+
+html{
+    min-height: 92%;
+}
+
+.userlist{
+    margin-top: 50%;
+}
