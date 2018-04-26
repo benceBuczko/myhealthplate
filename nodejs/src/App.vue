@@ -1,20 +1,22 @@
 <template>
   <div id="app">
     <NavBar/>
-    <img src="./assets/logo.png">
-    <HelloWorld/>
+    <IndexContainer/>
+    <Footer/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+import IndexContainer from './components/IndexContainer'
 import NavBar from './components/NavBar'
+import Footer from './components/Footer'
 
 export default {
   name: 'App',
   components: {
     NavBar,
-    HelloWorld,
+    IndexContainer,
+    Footer
   }
 }
 </script>
