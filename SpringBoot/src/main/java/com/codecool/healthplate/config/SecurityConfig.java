@@ -4,19 +4,44 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
 @EnableAutoConfiguration
+@ComponentScan("com.codecool.healthplate.config")
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     DataSource dataSource;
+
+    @Autowired
+    private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
+
+    @Autowired
+    private MySavedRequestAwareAuthenticationSuccessHandler
+            authenticationSuccessHandler;
+
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurerAdapter() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**");
+            }
+        };
+    }
+
 
     @Autowired
     public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
@@ -28,20 +53,29 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/", "/home").permitAll()
-                .antMatchers(HttpMethod.POST,"/login", "/registercheck", "/register").permitAll()
+        http.cors().and().csrf().disable()
+                .exceptionHandling()
+                .authenticationEntryPoint(restAuthenticationEntryPoint)
                 .and()
                 .authorizeRequests()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/").permitAll()
+                .successHandler(authenticationSuccessHandler)
+                .failureHandler(new SimpleUrlAuthenticationFailureHandler())
                 .and()
                 .logout().permitAll();
-        http.exceptionHandling().accessDeniedPage("/403");
+    }
+
+    @Bean
+    public MySavedRequestAwareAuthenticationSuccessHandler mySuccessHandler(){
+        return new MySavedRequestAwareAuthenticationSuccessHandler();
+    }
+    @Bean
+    public SimpleUrlAuthenticationFailureHandler myFailureHandler(){
+        return new SimpleUrlAuthenticationFailureHandler();
     }
 }
+
 
 

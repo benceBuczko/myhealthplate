@@ -2,20 +2,24 @@
   <div class="container">
         <div class="row firstrow">
             <div class="col-lg-6 text-center">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlgY8PEapHnW4x8L-m8gaK-nisMzifLOO5VjEAIDMnzG6-cqng1Q" height="80%" width="70%" />
+                <img src="http://www.receptdoki.hu/images/cikk_okostanyer.jpg" height="90%" width="90%" />
             </div>
             <div class="col-lg-6 text-center">
                 <h2 class="text-center w3-tangerine mainText">Keeping up with a healthy diet is a long-term commitment, but it is within your reach. <br/><br/>
                 Register to get started!</h2><br/>
-                <button class="btn btn-info text-center registerButton" data-toggle="modal" data-target="#registerModal">Register</button>
+                <b-btn class="btn btn-info text-center registerButton" v-b-modal.modalRegister>Register</b-btn>
             </div>
         </div>
+        <Register/>
     </div>
 </template>
 
 <script>
+import Register from '@/components/Register'
+
 export default {
   name: 'IndexContainer',
+  components: {Register},
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'

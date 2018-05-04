@@ -15,18 +15,10 @@
         <b-nav-item href="#">About</b-nav-item>
         <b-nav-item href="#">Contact</b-nav-item>
 
-        <b-nav-item-dropdown right>
-            <!-- Using button-content slot -->
-            <template slot="button-content">
-            <em>Login</em>
-            </template>
-            <b-dropdown-item href="#">Profile</b-dropdown-item>
-            <b-dropdown-item href="#">Signout</b-dropdown-item>
-        </b-nav-item-dropdown>
-
-        <b-nav-form>
-            <b-form-input size="sm" class="mr-sm-2" type="text" placeholder="Search recipes"/>
-            <b-button size="sm" class="my-2 my-sm-0 btn-info" type="submit">Search</b-button>
+        <b-nav-form id="loginForm">
+            <b-form-input size="sm" class="mr-sm-2" type="text" placeholder="Username" name="username" id="username"/>
+            <b-form-input size="sm" class="mr-sm-2" type="text" placeholder="Password" name="password" id="password"/>
+            <b-button size="sm" class="my-2 my-sm-0 btn-info" type="submit">Sign In</b-button>
         </b-nav-form>
 
 
@@ -37,12 +29,41 @@
 </template>
 
 <script>
+import axios from 'axios';
+import $ from 'jquery';
+
 export default {
   name: 'NavBar',
   data () {
     return {
     }
   }
+}
+
+$(document).ready(function () {
+  $('#loginForm').submit(function(e){
+    e.preventDefault();
+    performPostRequest();
+  });
+})
+
+function performPostRequest() {
+
+  var formdata = new FormData();
+  var username = $('#username').val();
+  var password = $('#password').val();
+  
+  formdata.append("username", username);
+  formdata.append("password", password);
+  axios.post('http://127.0.0.1:9999/', 
+    formdata
+    )
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
 }
 </script>
 

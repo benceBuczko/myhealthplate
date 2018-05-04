@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 import java.util.Map;
 
-@org.springframework.stereotype.Controller
+@CrossOrigin
+@RestController
 public class Controller {
 
     @Autowired
@@ -24,13 +25,15 @@ public class Controller {
         return "index";
     }
 
+    @RequestMapping(value = "/loginsuccess", method = RequestMethod.GET)
+    public String loginsuccess(Principal principal) {
+        String username = (principal == null) ? null : userService.getUserByEmail(principal.getName()).getUserName();
+        return username;
+    }
 
-    @RequestMapping(value = "/registercheck", method = RequestMethod.POST)
-    @ResponseBody
-    public String registerCheck(@RequestBody Map<String, String> userEmail, Model model) {
-        String email = userEmail.get("userEmail");
-        if (userService.getUserByEmail(email) == null) return "true";
-        else return "false";
+    @RequestMapping(value = "/loginfail", method = RequestMethod.GET)
+    public String loginfail() {
+        return "fail";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -47,12 +50,5 @@ public class Controller {
         return "user";
     }
 
-   /* @RequestMapping(value = "/login", method = RequestMethod.POST)
-    @ResponseBody
-    public String login(@RequestBody Map<String,String> userparams) {
-        User user = userService.getUserByEmail(userparams.get("email"));
-        if(user != null && BCrypt.checkpw(userparams.get("password"),user.getPassword())) return "true";
-        else return "false";
-    }*/
 
 }
