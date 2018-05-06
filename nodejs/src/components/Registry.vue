@@ -1,25 +1,25 @@
 <template>
   <div class="container">
         <div class="row firstrow">
-            <div class="col-lg-6 text-center">
-                <img src="http://www.receptdoki.hu/images/cikk_okostanyer.jpg" height="100%" width="100%" />
-            </div>
-            <div class="col-lg-6 text-center">
-                <h2 class="text-center w3-tangerine mainText">Keeping up with a healthy diet is a long-term commitment, but it is within your reach. <br/><br/>
-                Register to get started!</h2><br/>
-                <b-btn class="btn btn-info text-center registerButton" v-b-modal.modalRegister>Register</b-btn>
+            <div class="col">
+                <h2 class="text-center w3-tangerine mainText">Thank you for registering to our site! <br/><br/>
+                Please log in with your credentials in the top rigth corner! </h2><br/>
             </div>
         </div>
-        <Register/>
+        <div class="row">
+            <div class="col text-align-center">
+                <img src="https://ih1.redbubble.net/image.316926441.0739/flat,1000x1000,075,f.u1.jpg" width="50%" height="70%">
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
-import Register from '@/components/Register'
-
 export default {
-  name: 'IndexContainer',
-  components: {Register},
+  name: 'Registry',
+  components: {
+
+  },
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
@@ -32,7 +32,6 @@ export default {
 <style scoped>
 h1, h2 {
   font-weight: normal;
-  font-size: 300%;
 }
 ul {
   list-style-type: none;
@@ -45,9 +44,6 @@ li {
 a {
   color: #42b983;
 }
-.firstrow{
-    margin-top: 10%;
-}
 
 .registerButton{
     padding-left: 8%;
@@ -57,12 +53,15 @@ a {
 
 .w3-tangerine {
     font-family: 'Tangerine', serif;
+    font-size: 300%;
 }
 
 .container{
     width: 80%;
 }
-
+.text-align-center{
+    text-align: center;
+}
 .mainText{
     margin-top: 5%;
 }

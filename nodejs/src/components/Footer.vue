@@ -21,5 +21,6 @@ export default {
 <style scoped>
     .footer{
     background: none;
+    height: 120px;
 }
 </style>

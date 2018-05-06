@@ -7,6 +7,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+import $ from 'jquery';
 
 import NavBar from '@/components/NavBar'
 import Footer from '@/components/Footer'

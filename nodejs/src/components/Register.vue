@@ -64,6 +64,9 @@
 </template>
 
 <script>
+import axios from 'axios';
+import $ from 'jquery';
+
 export default {
   name: 'Register',
   data () {
@@ -95,12 +98,23 @@ export default {
       }
     },
     handleSubmit () {
-      this.clear()
-    },
-    onSubmit: function() {
-          // Log entire model to console
-          console.log(this.name)
-        }
+      var formData = new FormData();
+      formData.append('name',this.name)
+      formData.append('email',this.email)
+      formData.append('password',this.password)
+      var thisData = this
+      axios.post("http://localhost:9999/register",formData)
+        .then(function (response) { 
+          if(response.data === false){
+            thisData.warning = "This email address is already registered!"
+          } else {
+           location.replace("/#/registry")
+          };
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
   }
 }
 </script>
