@@ -7,11 +7,21 @@ import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'jquery/dist/jquery.min.js'
-import VeeValidate from 'vee-validate';
+import VeeValidate from 'vee-validate'
 import VueSession from 'vue-session'
 import Vuetify from 'vuetify'
-import 'vuetify/dist/vuetify.min.css';
- 
+import VueScrollTo from 'vue-scrollto'
+import * as VueGoogleMaps from "vue2-google-maps";
+
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: "AIzaSyCl84y5rPhifwaZ3sH3a3k5hpGMzdwJIBk",
+    libraries: "places" // necessary for places input
+  }
+});
+
+Vue.use(VueScrollTo)
+
 Vue.use(Vuetify)
 
 Vue.use(VueSession)

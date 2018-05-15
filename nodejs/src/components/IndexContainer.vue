@@ -1,100 +1,117 @@
 <template>
-    <v-container fluid text-xs-center>
-        <v-layout  row>
-            <v-flex d-flex xs2>
-                <v-navigation-drawer id="sidebar" permanent light>
-                    <v-list>
-                        <v-list-tile key="l1" @click="home">
-                            <v-list-tile-action>
-                            <v-icon>home</v-icon>
-                            </v-list-tile-action>
-                            <v-list-tile-content>
-                            <v-list-tile-title>Home</v-list-tile-title>
-                            </v-list-tile-content>
-                        </v-list-tile>
-                        <v-list-tile key="l1" @click="about">
-                            <v-list-tile-action>
-                            <v-icon>subject</v-icon>
-                            </v-list-tile-action>
-                            <v-list-tile-content>
-                            <v-list-tile-title>About</v-list-tile-title>
-                            </v-list-tile-content>
-                        </v-list-tile>
-                        <v-list-tile key="l2" @click="browse">
-                            <v-list-tile-action>
-                            <v-icon>search</v-icon>
-                            </v-list-tile-action>
-                            <v-list-tile-content>
-                            <v-list-tile-title>Browse</v-list-tile-title>
-                            </v-list-tile-content>
-                        </v-list-tile>
-                        <v-list-tile key="l3" @click="contact">
-                            <v-list-tile-action>
-                            <v-icon>email</v-icon>
-                            </v-list-tile-action>
-                            <v-list-tile-content>
-                            <v-list-tile-title>Contact</v-list-tile-title>
-                            </v-list-tile-content>
-                        </v-list-tile>
-                    </v-list>
-                </v-navigation-drawer>
-            </v-flex>
-            <v-flex xs10>
-                <transition name="fade">
-                    <Home v-show="content === 'home'"/>
-                </transition>
-                <transition name="fade">
-                    <About v-show="content === 'about'"/>
-                </transition>
-                <transition name="fade">
-                    <Contact v-show="content === 'contact'"/>
-                </transition>
-            </v-flex>
-        </v-layout>
-    </v-container>
+<div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col carousel">
+                <b-carousel id="carousel1"
+                            style="text-shadow: 1px 1px 2px #333;"
+                            indicators
+                            background="#ababab"
+                            :interval="4000"
+                            img-width="1028"
+                            img-height="280"
+                            v-model="slide"
+                            @sliding-start="onSlideStart"
+                            @sliding-end="onSlideEnd"
+                >
+
+                    <!-- Text slides with image -->
+                    <b-carousel-slide text="Motivation!"
+                                        img-src="https://www.genliferegenerativemedicine.com/wp-content/uploads/2016/05/Nutrition-Wellness-Weight-Loss-Miami-1024x280.png"
+                    ></b-carousel-slide>
+
+                    <!-- Slides with custom text -->
+                    <b-carousel-slide  text="Something Inspirational!"
+                                        img-src="http://molinocolombo.it/wp-content/uploads/2016/10/classica-1-1024x280.jpg">
+                    </b-carousel-slide>
+
+                    <!-- Slides with image only -->
+                    <b-carousel-slide text="Growth Mindset!"
+                                        img-src="http://exportimportglobal.com/wp-content/uploads/2017/07/4-5-1024x280.jpg">
+                    </b-carousel-slide>
+                </b-carousel>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row firstrow">
+            <div class="col-lg-6 text-center">
+                <img src="http://www.receptdoki.hu/images/cikk_okostanyer.jpg" height="100%" width="90%" />
+            </div>
+            <div class="col-lg-6 text-center">
+                <h2 class="text-center w3-tangerine mainText">Keeping up with a healthy diet is a long-term commitment, but it is within your reach. <br/><br/>
+                Register to get started!</h2><br/>
+                <b-btn class="btn btn-info text-center registerButton" v-b-modal.modalRegister>Register</b-btn>
+            </div>
+        </div>
+        <br>
+        <hr class="featurett-divider">
+        <div class="row" id="about">
+            <div class="col-lg-6">
+                <h2 class="text-center w3-tangerine mainText"> Build a Healthy Eating Style</h2>
+                <p>All food and beverage choices matter – focus on variety, amount, and nutrition.
+                </p>
+                <ul>
+                    <li>Use Nutrition Facts labels and ingredient lists to find amounts of saturated fat, sodium, and added sugars in the foods and beverages you choose.</li>
+                    <li>Eat the right amount of calories for you based on your age, sex, height, weight, and physical activity level.</li>
+                    <li>Building a healthier eating style can help you avoid overweight and obesity and reduce your risk of diseases such as heart disease, diabetes, and cancer.</li>
+                </ul>
+                <p>Choose an eating style low in saturated fat, sodium, and added sugars.
+                </p>
+                <ul>
+                    <li>Focus on making healthy food and beverage choices from all five food groups including fruits, vegetables, grains, protein foods, and dairy to get the nutrients you need.</li>
+                    <li>Look for food and drink choices that are lower in saturated fat, sodium, and added sugar.</li>
+                    <li> Eating foods with less sodium can reduce your risk of high blood pressure.</li>
+                </ul>
+                <p>Make small changes to create a healthier eating style.
+                </p>
+                <ul>
+                    <li>Make half your plate fruits and vegetables.</li>
+                    <li>Vary your veggies.</li>
+                    <li> Make half your grains whole grains.</li>
+                    <li> Move to low-fat and fat-free dairy.</li>
+                    <li> Vary your protein routine.</li>
+                    <li> Eat and drink the right amount for you.</li>
+                </ul>
+            </div>
+            <div class="col-lg-6 text-center">
+                <img class="middle" src="https://images.pexels.com/photos/247685/pexels-photo-247685.png?auto=compress&cs=tinysrgb&h=350">
+            </div>
+        </div>
+        <br>
+        <hr class="featurett-divider">
+        <div class="row lastrow" id="contact">
+            <div class="col-lg-12 text-center">
+                <h2 class="text-center w3-tangerine mainText"> Find us here! (But please do not visit...)</h2>
+                <p>Nagymező street 44., Budapest - Hungary</p>
+                <GoogleMap/>
+            </div>
+        </div>
+        <Register/>
+    </div>
+    
+</div>
 </template>
 
 <script>
-import Home from '@/components/Home'
-import About from '@/components/About'
-import Contact from '@/components/Contact'
+import Register from '@/components/Register'
+import GoogleMap from '@/components/GoogleMap'
 
 export default {
   name: 'IndexContainer',
-  components: {Home, About, Contact},
+  components: {Register, GoogleMap},
   data () {
     return {
-        content : "home",
+      slide: 0,
+      sliding: null
     }
   },
   methods: {
-    about(){
-        var self = this
-        if (self.content !== 'about'){
-            this.content = ""
-            setTimeout(function(){self.content = "about"}, 501)
-        }
+    onSlideStart (slide) {
+      this.sliding = true
     },
-    home(){
-        var self = this
-        if (self.content !== 'home'){
-            this.content = ""
-            setTimeout(function(){self.content = "home"}, 501)
-        }
-    },
-    browse(){
-        var self = this
-        if (self.content !== 'browse'){
-            this.content = ""
-            setTimeout(function(){self.content = "browse"}, 501)
-        }
-    },
-    contact(){
-        var self = this
-        if (self.content !== 'contact'){
-            this.content = ""
-            setTimeout(function(){self.content = "contact"}, 501)
-        }
+    onSlideEnd (slide) {
+      this.sliding = false
     }
   }
 }
@@ -106,16 +123,15 @@ h1, h2 {
   font-weight: normal;
   font-size: 300%;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
+
 li {
-  display: inline-block;
-  margin: 0 10px;
+  margin-top: 10px;
 }
 a {
   color: #42b983;
+}
+.firstrow{
+    margin-top: 10%;
 }
 
 .registerButton{
@@ -128,26 +144,19 @@ a {
     font-family: 'Tangerine', serif;
 }
 
-.container{
-    width: 80%;
-}
-
 .mainText{
     margin-top: 5%;
 }
-.firstrow{
-    margin-top: 40px;
-    border: 2px #00a55b;
+.container-fluid {
+    padding: 0;
 }
-.container {
-   padding: 0!important;
-   margin-left: 10px;
+.container{
+    margin-bottom: 50px;
 }
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+.middle{
+    margin-top: 150px;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
+.lastrow{
+    margin-bottom: 150px!important;
 }
-
 </style>
