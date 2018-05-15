@@ -1,11 +1,11 @@
 <template>
-  <footer class="footer">
-        <div class="container">
-            <hr class="featurette-divider"/>
+    <v-footer class="pa-3">
+        <v-spacer></v-spacer>
+        <div>
             <p class="float-right"><a href="#">Back to top</a></p>
             <p class="float-left">© 2017-2018 Company-B, Inc.</p>
         </div>
-    </footer>
+    </v-footer>
 </template>
 <script>
 export default {
@@ -21,6 +21,5 @@ export default {
 <style scoped>
     .footer{
     background: none;
-    height: 120px;
 }
 </style>

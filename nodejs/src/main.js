@@ -9,6 +9,10 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'jquery/dist/jquery.min.js'
 import VeeValidate from 'vee-validate';
 import VueSession from 'vue-session'
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css';
+ 
+Vue.use(Vuetify)
 
 Vue.use(VueSession)
 

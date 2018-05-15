@@ -12,6 +12,6 @@ public class InitializerBean {
 
 
     public InitializerBean(UserService us) {
-        us.saveUser(new User("11","11","11@11"));
+        us.saveUser(new User("Emanuel","11","11@11"));
     }
 }
