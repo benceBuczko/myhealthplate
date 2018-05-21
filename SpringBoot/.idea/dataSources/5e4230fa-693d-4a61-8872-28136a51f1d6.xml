@@ -51,8 +51,8 @@
     </role>
     <schema id="11" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2018-05-04.17:00:49.369</IntrospectionTimestamp>
-      <IntrospectionStateNumber>1565</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2018-05-21.14:35:30.801</IntrospectionTimestamp>
+      <IntrospectionStateNumber>1676</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -72,77 +72,107 @@
       <ObjectId>12648</ObjectId>
     </schema>
     <sequence id="17" parent="11" name="users_id_seq">
-      <ObjectId>26733</ObjectId>
-      <StateNumber>1564</StateNumber>
+      <ObjectId>26997</ObjectId>
+      <StateNumber>1675</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
       <BelongsToColumn>1</BelongsToColumn>
       <CacheSize>1</CacheSize>
       <DataType>bigint</DataType>
     </sequence>
     <table id="18" parent="11" name="users">
-      <ObjectId>26735</ObjectId>
-      <StateNumber>1564</StateNumber>
+      <ObjectId>26999</ObjectId>
+      <StateNumber>1675</StateNumber>
     </table>
     <column id="19" parent="18" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1564</StateNumber>
+      <StateNumber>1675</StateNumber>
       <DefaultExpression>nextval(&apos;users_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>20</TypeId>
       <SequenceName>users_id_seq</SequenceName>
     </column>
-    <column id="20" parent="18" name="date_of_birth">
+    <column id="20" parent="18" name="activity">
       <Position>2</Position>
-      <DataType>date|0s</DataType>
-      <StateNumber>1564</StateNumber>
-      <TypeId>1082</TypeId>
+      <DataType>double precision|0s</DataType>
+      <StateNumber>1675</StateNumber>
+      <TypeId>701</TypeId>
     </column>
-    <column id="21" parent="18" name="email">
+    <column id="21" parent="18" name="age">
       <Position>3</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>1564</StateNumber>
-      <TypeId>1043</TypeId>
+      <DataType>integer|0s</DataType>
+      <StateNumber>1675</StateNumber>
+      <TypeId>23</TypeId>
     </column>
-    <column id="22" parent="18" name="password">
+    <column id="22" parent="18" name="email">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1564</StateNumber>
+      <StateNumber>1675</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="23" parent="18" name="picture">
+    <column id="23" parent="18" name="energy">
       <Position>5</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <StateNumber>1564</StateNumber>
-      <TypeId>1043</TypeId>
+      <DataType>double precision|0s</DataType>
+      <StateNumber>1675</StateNumber>
+      <TypeId>701</TypeId>
     </column>
-    <column id="24" parent="18" name="user_name">
+    <column id="24" parent="18" name="gender">
       <Position>6</Position>
+      <DataType>boolean|0s</DataType>
+      <StateNumber>1675</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <column id="25" parent="18" name="height">
+      <Position>7</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>1675</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="26" parent="18" name="password">
+      <Position>8</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1564</StateNumber>
+      <StateNumber>1675</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="25" parent="18" name="users_pkey">
-      <ObjectId>26742</ObjectId>
+    <column id="27" parent="18" name="picture">
+      <Position>9</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1675</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="28" parent="18" name="user_name">
+      <Position>10</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1675</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="29" parent="18" name="weight">
+      <Position>11</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>1675</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="30" parent="18" name="users_pkey">
+      <ObjectId>27006</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="26" parent="18" name="uk_6dotkott2kjsp8vw4d0m25fb7">
-      <ObjectId>26744</ObjectId>
+    <index id="31" parent="18" name="uk_6dotkott2kjsp8vw4d0m25fb7">
+      <ObjectId>27008</ObjectId>
       <ColNames>email</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="27" parent="18" name="users_pkey">
-      <ObjectId>26743</ObjectId>
+    <key id="32" parent="18" name="users_pkey">
+      <ObjectId>27007</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>users_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="28" parent="18" name="uk_6dotkott2kjsp8vw4d0m25fb7">
-      <ObjectId>26745</ObjectId>
+    <key id="33" parent="18" name="uk_6dotkott2kjsp8vw4d0m25fb7">
+      <ObjectId>27009</ObjectId>
       <ColNames>email</ColNames>
       <UnderlyingIndexName>uk_6dotkott2kjsp8vw4d0m25fb7</UnderlyingIndexName>
     </key>
