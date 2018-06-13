@@ -29,7 +29,7 @@
        </b-popover>
         <b-navbar-nav v-if="this.$session.exists()">
           <b-nav-item-dropdown id="ddown-right" right :text=name class="m-md-2">
-            <b-dropdown-item href="#/user">My Profile</b-dropdown-item>
+            <b-dropdown-item href="#/user/profile">My Profile</b-dropdown-item>
             <b-dropdown-divider></b-dropdown-divider>
             <b-dropdown-item @click="logout">Logout</b-dropdown-item>
           </b-nav-item-dropdown>
@@ -64,7 +64,7 @@ export default {
 
       formdata.append("email", username);
       formdata.append("password", password);
-      axios.post('http://127.0.0.1:9999/login', 
+      axios.post('http://localhost:9999/login', 
         formdata
         )
       .then(function (response) {

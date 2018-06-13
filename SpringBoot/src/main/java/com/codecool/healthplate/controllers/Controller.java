@@ -1,6 +1,8 @@
 package com.codecool.healthplate.controllers;
 
+import com.codecool.healthplate.models.Recipe;
 import com.codecool.healthplate.models.User;
+import com.codecool.healthplate.services.RecipeService;
 import com.codecool.healthplate.services.UserService;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
 import java.util.Map;
 
 import static java.lang.Boolean.parseBoolean;
@@ -21,6 +24,9 @@ public class Controller {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private RecipeService recipeService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(Model model, Principal principal) {
@@ -76,6 +82,14 @@ public class Controller {
         userService.saveUser(user);
         Gson gson = new Gson();
         return gson.toJson(user);
+    }
+
+    @RequestMapping(value = "/get-recipes/{id}", method = RequestMethod.GET)
+    public String getRecipes(@PathVariable Long id){
+        User user = userService.getUserById(id);
+        List<Recipe> recipes = recipeService.getRecipesByUser(user);
+        Gson gson = new Gson();
+        return gson.toJson(recipes);
     }
 
 }

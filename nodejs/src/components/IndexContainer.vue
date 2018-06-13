@@ -84,10 +84,8 @@
             <div class="col-lg-12 text-center">
                 <h2 class="text-center w3-tangerine mainText"> Find us here! (But please do not visit...)</h2>
                 <p>Nagymező street 44., Budapest - Hungary</p>
-                <GoogleMap/>
             </div>
         </div>
-        <Register/>
     </div>
     
 </div>

@@ -16,12 +16,15 @@ public class UserService {
     PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     public void saveUser(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
 
     public User getUserByEmail(String email){
         return userRepository.getUserByEmail(email);
+    }
+
+    public User getUserById(Long id){
+        return userRepository.findOne(id);
     }
 
     //Harris-Benedict

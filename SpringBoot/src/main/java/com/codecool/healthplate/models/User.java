@@ -1,6 +1,10 @@
 package com.codecool.healthplate.models;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="Users")
@@ -40,9 +44,13 @@ public class User {
     @Column
     private int activity;
 
+    @Column
+    @OneToMany(mappedBy = "user")
+    private transient List<Recipe> recipes = new ArrayList<>();
+
     public User(String userName, String password, String email) {
         this.userName = userName;
-        this.password = password;
+        this.password = new BCryptPasswordEncoder().encode(password);
         this.email = email;
     }
 
@@ -136,5 +144,13 @@ public class User {
 
     public void setActivity(int activity) {
         this.activity = activity;
+    }
+
+    public List<Recipe> getRecipes() {
+        return recipes;
+    }
+
+    public void setRecipes(List<Recipe> recipes) {
+        this.recipes = recipes;
     }
 }
